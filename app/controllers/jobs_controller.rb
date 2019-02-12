@@ -28,18 +28,26 @@ class JobsController < ApplicationController
     #type_of_user is either "Student" or "Tutor"
 
 
-    byebug
-    @job = Job.new(job_params)
+    @job = Job.new(job_params(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id))
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if params[:type_of_user] == "Student"
+      @job.student_id = current_user.id
+    elsif params[:type_of_user] == "Tutor"
+      @job.tutor_id = current_user.id
     end
+
+    # respond_to do |format|
+      if @job.save
+        redirect_to @job
+        # format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        # format.json { render :show, status: :created, location: @job }
+      else
+        flash[:message] = "Validations here"
+        render :new
+        # format.html { render :new }
+        # format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    # end
   end
 
   # PATCH/PUT /jobs/1
@@ -73,7 +81,10 @@ class JobsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
-      params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id, :type_of_user)
+    def job_params(*args)
+      params.require(:job).permit(*args)
     end
+    # def job_params
+    #   params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id, :type_of_user)
+    # end
 end

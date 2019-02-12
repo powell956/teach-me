@@ -36,8 +36,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :topic_id %>
-    <%= form.number_field :topic_id %>
+    <%= form.label :topic_id, "Topic: " %>
+    <%= form.collection_select :topic_id, Topic.all, :id, :name %>
   </div>
 
   <div class="actions">
