@@ -15,6 +15,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
+
   end
 
   # GET /jobs/1/edit
@@ -24,6 +25,10 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    #type_of_user is either "Student" or "Tutor"
+
+
+    
     @job = Job.new(job_params)
 
     respond_to do |format|
@@ -69,6 +74,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id)
+      params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id, :type_of_user)
     end
 end

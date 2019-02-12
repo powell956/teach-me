@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "it's hitting seed file"
+
+
 u1 = User.create(name: "Katie P", bio: "Autodidact")
 u2 = User.create(name: "Dan P", bio: "Life-long learner")
 u3 = User.create(name: "Hulk H", bio: "Polyglot")
@@ -43,3 +47,5 @@ ut7 = UserTopic.create(user_id: u3.id, topic_id: t4.id)
 ut8 = UserTopic.create(user_id: u4.id, topic_id: t5.id)
 ut9 = UserTopic.create(user_id: u1.id, topic_id: t7.id)
 ut10 = UserTopic.create(user_id: u3.id, topic_id: t7.id)
+
+puts "completed seed file"
