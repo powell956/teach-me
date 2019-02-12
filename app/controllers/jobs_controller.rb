@@ -28,7 +28,7 @@ class JobsController < ApplicationController
     #type_of_user is either "Student" or "Tutor"
 
 
-    
+    byebug
     @job = Job.new(job_params)
 
     respond_to do |format|
