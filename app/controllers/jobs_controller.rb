@@ -37,7 +37,7 @@ class JobsController < ApplicationController
     # respond_to do |format|
       if @job.save
 
-        redirect_to '/job_board', notice: 'Successfully posted your job'
+        redirect_to '/job_board'
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         # format.json { render :show, status: :created, location: @job }
       else

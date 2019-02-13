@@ -13,6 +13,14 @@ class Job < ApplicationRecord
     Job.where(student_id: nil)
   end
 
+  def has_student?
+    !!self.student
+  end
+
+  def has_tutor?
+    !!self.tutor
+  end
+
 
 
 
