@@ -53,14 +53,14 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
-  def add_tutor_or_student
-    if @job.tutor == nil
-      @job.tutor_id = current_user.id
-    elsif @job.student == nil
-      @job.student_id = currrent_user.id
-    end
-    redirect_to @job
-  end
+  # def add_tutor_or_student
+  #   if @job.tutor == nil
+  #     @job.tutor_id = current_user.id
+  #   elsif @job.student == nil
+  #     @job.student_id = currrent_user.id
+  #   end
+  #   redirect_to @job
+  # end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
