@@ -1,0 +1,17 @@
+<h2>Tutors Needed!</h2>
+
+<div>
+  Search by Topic:
+</div>
+
+<ul>
+  <% @jobs.looking_for_tutors.each do |job| %>
+<li> <%= job.student.username %><br>
+  <%= job.description %><br>
+  <%= job.location %><br>
+  <%= job.time %><br>
+  <%= job.rate %><br>
+  <%= job.topic.name %></li><br>
+  <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
+  <% end %>
+</ul>

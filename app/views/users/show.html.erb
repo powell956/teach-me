@@ -45,17 +45,20 @@
   <% end %>
 
   <strong>Tutoring Requests</strong><br>
-  <% if @user.job_postings %>
+  <% if @user.job_postings.count > 0 %>
     <% @user.job_postings.each do |job|%>
       <% if job.has_tutor? %>
         <%= link_to "Meeting with #{job.tutor.name}", job_path %><br>
-        <%= job.location %><br>
-        <%= job.time %><br>
-      <% else %>
-      <p>You have no tutoring sessions!</p><br>
-      <% end %>
-    <% end %>
+        <% else %>
+            <%= link_to "Job Post", job_path %><br>
+        <% end %>
+    <%= job.location %><br>
+    <%= job.time %><br>
+    <%= link_to 'Edit', edit_job_path(job) %><br>
   <% end %>
+<% else %>
+  <p>You have no tutoring requests!</p><br>
+<% end %>
 
 
 <% end %>

@@ -21,6 +21,22 @@ class Job < ApplicationRecord
     !!self.tutor
   end
 
+  def self.search(search)
+    if search
+      # byebug
+    topic = Topic.find_by(name: search)
+      if !!topic
+        # byebug
+        self.where(topic_id: topic.id)
+      else
+        Job.all
+      end
+    else
+      Job.all
+    end
+    # byebug
+  end
+
   # def topic
   #   Topic.find(self.topic_id)
   # end

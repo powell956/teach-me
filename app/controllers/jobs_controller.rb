@@ -3,7 +3,6 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
-
   end
 
   def show
@@ -44,6 +43,15 @@ class JobsController < ApplicationController
 
   def job_board
     @jobs = Job.all
+  end
+
+  def looking_for_students
+    @jobs = Job.search(params[:search])
+    # byebug
+  end
+
+  def looking_for_tutors
+    @jobs = Job.search(params[:search])
   end
 
   def add_tutor_or_student
