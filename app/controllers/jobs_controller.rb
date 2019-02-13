@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :add_tutor_or_student]
 
   # GET /jobs
   # GET /jobs.json
@@ -25,8 +25,6 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    #type_of_user is either "Student" or "Tutor"
-
 
     @job = Job.new(job_params(:description, :location, :time, :rate, :topic_id))
 
@@ -36,12 +34,10 @@ class JobsController < ApplicationController
       @job.tutor_id = current_user.id
     end
 
-
-
     # respond_to do |format|
       if @job.save
 
-        redirect_to @job
+        redirect_to '/job_board', notice: 'Successfully posted your job'
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         # format.json { render :show, status: :created, location: @job }
       else
@@ -51,6 +47,19 @@ class JobsController < ApplicationController
         # format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     # end
+  end
+
+  def job_board
+    @jobs = Job.all
+  end
+
+  def add_tutor_or_student
+    if @job.tutor == nil
+      @job.tutor_id = current_user.id
+    elsif @job.student == nil
+      @job.student_id = currrent_user.id
+    end
+    redirect_to @job
   end
 
   # PATCH/PUT /jobs/1
@@ -66,6 +75,7 @@ class JobsController < ApplicationController
       end
     end
   end
+
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
@@ -87,7 +97,5 @@ class JobsController < ApplicationController
     def job_params(*args)
       params.require(:job).permit(*args)
     end
-    # def job_params
-    #   params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id, :type_of_user)
-    # end
+
 end
