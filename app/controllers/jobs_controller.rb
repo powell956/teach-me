@@ -28,7 +28,7 @@ class JobsController < ApplicationController
     #type_of_user is either "Student" or "Tutor"
 
 
-    @job = Job.new(job_params(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id))
+    @job = Job.new(job_params(:description, :location, :time, :rate, :topic_id))
 
     if params[:type_of_user] == "Student"
       @job.student_id = current_user.id
@@ -36,13 +36,16 @@ class JobsController < ApplicationController
       @job.tutor_id = current_user.id
     end
 
+
+
     # respond_to do |format|
       if @job.save
+
         redirect_to @job
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         # format.json { render :show, status: :created, location: @job }
       else
-        flash[:message] = "Validations here"
+        # flash[:message] = "Validations here"\
         render :new
         # format.html { render :new }
         # format.json { render json: @job.errors, status: :unprocessable_entity }
