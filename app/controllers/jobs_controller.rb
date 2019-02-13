@@ -30,9 +30,9 @@ class JobsController < ApplicationController
 
     @job = Job.new(job_params(:description, :location, :time, :rate, :topic_id))
 
-    if params[:type_of_user] == "Student"
+    if params[:job][:type_of_user] == "Student"
       @job.student_id = current_user.id
-    elsif params[:type_of_user] == "Tutor"
+    elsif params[:job][:type_of_user] == "Tutor"
       @job.tutor_id = current_user.id
     end
 
