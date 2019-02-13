@@ -23,10 +23,8 @@ class Job < ApplicationRecord
 
   def self.search(search)
     if search
-      # byebug
     topic = Topic.find_by(name: search)
       if !!topic
-        # byebug
         self.where(topic_id: topic.id)
       else
         Job.all
@@ -34,7 +32,6 @@ class Job < ApplicationRecord
     else
       Job.all
     end
-    # byebug
   end
 
   # def topic

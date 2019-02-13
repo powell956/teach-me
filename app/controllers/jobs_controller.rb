@@ -47,7 +47,6 @@ class JobsController < ApplicationController
 
   def looking_for_students
     @jobs = Job.search(params[:search])
-    # byebug
   end
 
   def looking_for_tutors

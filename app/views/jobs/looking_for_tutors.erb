@@ -3,6 +3,10 @@
 <div>
   Search by Topic:
 </div>
+<%= form_tag '/looking_for_tutors', method: 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
 
 <ul>
   <% @jobs.looking_for_tutors.each do |job| %>
