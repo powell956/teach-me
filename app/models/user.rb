@@ -14,6 +14,8 @@ class User < ApplicationRecord
   end
 
 
+<<<<<<< HEAD
+=======
 
   # def password=(new_password)
   #   salt = BCrypt::Engine::generate_salt
@@ -29,4 +31,5 @@ class User < ApplicationRecord
   #   return nil unless (salt + hashed) == self.password_digest
   # end
 
+>>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
 end

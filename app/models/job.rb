@@ -1,4 +1,5 @@
 class Job < ApplicationRecord
+
   belongs_to :student, class_name: "User", foreign_key: "student_id", optional: true
   belongs_to :tutor, class_name: "User",  foreign_key: "tutor_id", optional: true
   belongs_to :topic
@@ -7,7 +8,6 @@ class Job < ApplicationRecord
   def self.looking_for_tutors
     Job.where(tutor_id: nil)
   end
-
 
   def self.looking_for_students
     Job.where(student_id: nil)
@@ -21,8 +21,9 @@ class Job < ApplicationRecord
     !!self.tutor
   end
 
-
-
+  def topic
+    Topic.find(self.topic_id)
+  end
 
 
 end
