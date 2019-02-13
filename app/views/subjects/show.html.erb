@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Subject</h1>
 <p>
   <strong>Name:</strong>
   <%= @subject.name %>
+  <ul>
+    <% @subject.topics.each do |topic| %>
+    <li><%= link_to topic.name, topic %></li>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |

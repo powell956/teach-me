@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/looking_for_students', to: 'jobs#looking_for_students'
   get '/looking_for_tutors', to: 'jobs#looking_for_tutors'
 
+  post '/test', to: 'jobs#board_selection'
+
 end

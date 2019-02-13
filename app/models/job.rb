@@ -38,6 +38,10 @@ class Job < ApplicationRecord
     end
   end
 
+  def friendly_time
+    self.time.strftime("%A, %b %-d, %Y at %I:%M%p")
+  end
+
   # def topic
   #   Topic.find(self.topic_id)
   # end

@@ -41,6 +41,14 @@ class JobsController < ApplicationController
     # end
   end
 
+  def board_selection
+    if params[:board_selection] == "Hire Tutor"
+      redirect_to '/looking_for_students'
+    else
+      redirect_to '/looking_for_tutors'
+    end
+  end
+
   def job_board
     @jobs = Job.all
   end
@@ -59,7 +67,7 @@ class JobsController < ApplicationController
       @job.tutor_id = current_user.id
       @job.save
     elsif @job.student == nil
-      @job.student_id = currrent_user.id
+      @job.student_id = current_user.id
       @job.save
     end
     redirect_to @job

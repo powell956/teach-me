@@ -1,6 +1,12 @@
 <h1>Job Board</h1>
 
-<h2>Are you looking to hire or work as a tutor?</h2>
+<h4>Are you looking to hire a tutor or to help a student?</h4>
+<form action="/test" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="radio" name="board_selection" value="Hire Tutor"> Hire a tutor <br>
+  <input type="radio" name="board_selection" value="Help Student"> Help a student <br>
+  <input type="submit" value="Go">
+</form>
 
 
 <h2>Tutors Needed!</h2>
@@ -14,7 +20,7 @@
 <li> <%= job.student.username %><br>
   <%= job.description %><br>
   <%= job.location %><br>
-  <%= job.time %><br>
+  <%= job.friendly_time %><br>
   <%= job.rate %><br>
   <%= job.topic.name %></li><br>
   <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
@@ -34,9 +40,9 @@
 <li> <%= job.tutor.username %><br>
   <%= job.description %><br>
   <%= job.location %><br>
-  <%= job.time %><br>
+  <%= job.friendly_time %><br>
   <%= job.rate %><br>
   <%= job.topic.name %></li><br>
-  <%= button_to "Teach Me!", job, method: 'get' %>
+  <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
   <% end %>
 </ul>

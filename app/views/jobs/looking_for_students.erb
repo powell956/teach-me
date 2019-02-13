@@ -13,10 +13,10 @@
 <li> <%= job.tutor.username %><br>
   <%= job.description %><br>
   <%= job.location %><br>
-  <%= job.time %><br>
-  $<%= job.rate %>per hour<br> 
+  <%= job.friendly_time %><br>
+  $<%= job.rate %>per hour<br>
   <%= job.subject.name %><br>
   <%= job.topic.name %></li><br>
-  <%= button_to "Teach Me!", job, method: 'get' %>
+    <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
   <% end %>
 </ul>

@@ -23,11 +23,11 @@
         <td><%= job.student.name unless job.student == nil%></td>
         <td><%= job.description %></td>
         <td><%= job.location %></td>
-        <td><%= job.time %></td>
+        <td><%= job.friendly_time %></td>
         <td><%= job.rate %></td>
         <td><%= job.topic.name %></td>
         <td><%= link_to 'Show', job %></td>
-        
+
         <%# <!-- <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %><%#</td> --> %>
       </tr>
     <% end %>
