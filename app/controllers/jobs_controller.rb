@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
-    @topic = @job.topic
+
   end
 
   def show
