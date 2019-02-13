@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   get '/job_board', to: 'jobs#job_board'
-  # post '/job_board', to: 'jobs#add_tutor_or_student'
+  post '/job_board', to: 'jobs#add_tutor_or_student'
 
 
 end

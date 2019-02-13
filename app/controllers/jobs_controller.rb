@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :add_tutor_or_student]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -53,14 +53,17 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
-  # def add_tutor_or_student
-  #   if @job.tutor == nil
-  #     @job.tutor_id = current_user.id
-  #   elsif @job.student == nil
-  #     @job.student_id = currrent_user.id
-  #   end
-  #   redirect_to @job
-  # end
+  def add_tutor_or_student
+    @job = Job.find_by(id: params[:job_id])
+    if @job.tutor == nil
+      @job.tutor_id = current_user.id
+      @job.save
+    elsif @job.student == nil
+      @job.student_id = currrent_user.id
+      @job.save
+    end
+    redirect_to @job
+  end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json

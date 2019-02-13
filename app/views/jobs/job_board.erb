@@ -16,7 +16,7 @@
   <%= job.time %><br>
   <%= job.rate %><br>
   <%= job.topic.name %></li><br>
-  <%= button_to "I'll teach you!", job, method: 'get' %>
+  <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
   <% end %>
 </ul>
 
