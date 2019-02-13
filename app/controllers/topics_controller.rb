@@ -24,7 +24,9 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(topic_params)
+    byebug
+    @subject = Subject.find_or_create_by(name: params[:topic][:subject_name])
+    @topic = Topic.new(name: params[:topic][:name], subject_id: @subject.id)
 
     respond_to do |format|
       if @topic.save
@@ -68,7 +70,7 @@ class TopicsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def topic_params
-      params.require(:topic).permit(:name, :subject_id)
+    def topic_params(*args)
+      params.require(:topic).permit(*args)
     end
 end

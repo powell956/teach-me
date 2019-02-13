@@ -16,9 +16,11 @@
 </p>
 
 <%= link_to 'Create a Tutoring Job', new_job_path %> |
-<%= link_to 'See All Tutoring Jobs', jobs_path %> |
-<%= link_to 'Edit My Profile', edit_user_path(@user) %> |
+<%= link_to 'See All Tutoring Jobs', '/job_board' %> |
 <%= link_to 'All Users', users_path %>
+<% if @user.id == current_user.id %>
+| <%= link_to 'Edit My Profile', edit_user_path(@user) %>
+<% end %>
 
 
 
@@ -27,30 +29,36 @@
   <h3>My Scheduled Events</h3>
 
   <strong>Teaching Jobs</strong><br>
-  <% if @user.teaching_jobs %>
-    <% @user.teaching_jobs.each do |job|%>
-      <% if job.has_tutor? %>
-        <%= link_to "Tutoring #{job.student.name}", job_path %><br>
-        <%= job.location %><br>
-        <%= job.time %><br>
-      <% else %>
-      <p>You have no teaching jobs!</p><br>
-      <% end %>
+  <% if @user.teaching_jobs.count > 0 %>
+      <% @user.teaching_jobs.each do |job|%>
+          <% if job.has_student? %>
+              <%= link_to "Tutoring #{job.student.name}", job_path %><br>
+          <% else %>
+              <%= link_to "Job Post", job_path %><br>
+          <% end %>
+                <%= job.location %><br>
+                <%= job.friendly_time %><br>
+                <%= link_to 'Edit', edit_job_path(job) %><br>
     <% end %>
+  <% else %>
+    <p>You have no teaching jobs!</p><br>
   <% end %>
 
-  <strong>Tutoring Sessions</strong><br>
-  <% if @user.job_postings %>
+  <strong>Tutoring Requests</strong><br>
+  <% if @user.job_postings.count > 0 %>
     <% @user.job_postings.each do |job|%>
       <% if job.has_tutor? %>
         <%= link_to "Meeting with #{job.tutor.name}", job_path %><br>
-        <%= job.location %><br>
-        <%= job.time %><br>
-      <% else %>
-      <p>You have no tutoring sessions!</p><br>
-      <% end %>
-    <% end %>
+        <% else %>
+            <%= link_to "Job Post", job_path %><br>
+        <% end %>
+    <%= job.location %><br>
+    <%= job.friendly_time %><br>
+    <%= link_to 'Edit', edit_job_path(job) %><br>
   <% end %>
+<% else %>
+  <p>You have no tutoring requests!</p><br>
+<% end %>
 
 
 <% end %>

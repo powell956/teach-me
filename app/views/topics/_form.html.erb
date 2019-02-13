@@ -16,10 +16,14 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :subject_id %>
-    <%= form.number_field :subject_id %>
-  </div>
+  <%= form.label :subject_name, "Subject" %>
+  <%= form.text_field :subject_name, list: "subjects_autocomplete" %>
+  <datalist id="subjects_autocomplete">
+    <% Subject.all.each do |subject| %>
+      <option value="<%= subject.name %>">
+    <% end %>
+  </datalist>
+
 
   <div class="actions">
     <%= form.submit %>

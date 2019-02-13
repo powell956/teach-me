@@ -1,3 +1,4 @@
+#MAKE TOPIC A REQUIRED FIELD
 <%= form_with(model: job, local: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -12,11 +13,7 @@
   <% end %>
 
   <%= form.select :type_of_user, options_for_select([["Student", "Student"], ["Tutor", "Tutor"]]) %>
-<<<<<<< HEAD
-=======
 
-
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
 
   <div class="field">
     <%= form.label :description %>
@@ -38,14 +35,15 @@
     <%= form.number_field :rate %>
   </div>
 
+#MAKE TOPIC A REQUIRED FIELD
   <div class="field">
-<<<<<<< HEAD
+
     <%= form.label :topic_id %>
     <%= form.text_field :topic_id %>
-=======
+
     <%= form.label :topic_id, "Topic: " %>
     <%= form.collection_select :topic_id, Topic.all, :id, :name %>
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
+
   </div>
 
   <div class="actions">
