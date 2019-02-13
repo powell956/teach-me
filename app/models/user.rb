@@ -5,13 +5,15 @@ class User < ApplicationRecord
   has_many :user_topics
   has_many :topics, through: :user_topics
 
+  has_secure_password
+
   def subjects
     self.topics.map do |topic|
       topic.subject
     end.uniq
   end
 
-  has_secure_password
+
 
   # def password=(new_password)
   #   salt = BCrypt::Engine::generate_salt
@@ -26,5 +28,5 @@ class User < ApplicationRecord
   #   hashed = BCrypt::Engine::hash_secret(password, salt)
   #   return nil unless (salt + hashed) == self.password_digest
   # end
-  
+
 end
