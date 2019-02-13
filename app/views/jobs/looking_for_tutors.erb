@@ -1,7 +1,7 @@
 <h2>Tutors Needed!</h2>
 
 <div>
-  Search by Topic:
+  Search by Subject:
 </div>
 <%= form_tag '/looking_for_tutors', method: 'get' do %>
   <%= text_field_tag :search, params[:search] %>
@@ -15,6 +15,7 @@
   <%= job.location %><br>
   <%= job.time %><br>
   <%= job.rate %><br>
+  <%= job.subject.name %><br>
   <%= job.topic.name %></li><br>
   <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
   <% end %>

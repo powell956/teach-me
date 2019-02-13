@@ -1,7 +1,7 @@
 <h2>Need Tutoring?</h2>
 
 <div>
-  Search by Topic:
+  Search by Subject:
 </div>
 <%= form_tag '/looking_for_students', method: 'get' do %>
   <%= text_field_tag :search, params[:search] %>
@@ -14,7 +14,8 @@
   <%= job.description %><br>
   <%= job.location %><br>
   <%= job.time %><br>
-  $<%= job.rate %><br> per hour
+  $<%= job.rate %>per hour<br> 
+  <%= job.subject.name %><br>
   <%= job.topic.name %></li><br>
   <%= button_to "Teach Me!", job, method: 'get' %>
   <% end %>
