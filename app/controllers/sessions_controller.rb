@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
    @user = User.find_by(username: params[:username])
    # return head(:forbidden) unless @user.authenticate(params[:password])
+   # byebug
    if @user && @user.authenticate(params[:password])
      session[:user_id] = @user.id
      redirect_to @user
@@ -16,14 +17,6 @@ class SessionsController < ApplicationController
      redirect_to '/login'
    end
   end
-<<<<<<< HEAD
-=======
-
-  def destroy
-    session.delete(:user_id)
-    redirect_to '/login'
-  end
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
 
   def destroy
     session.delete(:user_id)
