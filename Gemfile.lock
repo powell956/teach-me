@@ -47,16 +47,8 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-<<<<<<< HEAD
-<<<<<<< HEAD
     autoprefixer-rails (9.4.7)
       execjs
-=======
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
-=======
-    autoprefixer-rails (9.4.7)
-      execjs
->>>>>>> katie-master
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.4.0)
@@ -76,7 +68,7 @@ GEM
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
     childprocess (0.9.0)
-      ffi (>= 1.0.11)
+      ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
@@ -91,7 +83,7 @@ GEM
     crass (1.0.4)
     erubi (1.8.0)
     execjs (2.7.0)
-    ffi (1.9.6)
+    ffi (1.9.25)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.5.3)

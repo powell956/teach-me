@@ -21,9 +21,8 @@ class Job < ApplicationRecord
     !!self.tutor
   end
 
-  def topic
-    Topic.find(self.topic_id)
-  end
-
+  # def topic
+  #   Topic.find(self.topic_id)
+  # end
 
 end

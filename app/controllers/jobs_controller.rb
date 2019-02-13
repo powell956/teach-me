@@ -70,12 +70,7 @@ class JobsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.json
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
   def destroy
     @job.destroy
     respond_to do |format|
@@ -90,15 +85,8 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
     end
 
-<<<<<<< HEAD
-
-    def job_params
-      params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id)
-=======
-    # Never trust parameters from the scary internet, only allow the white list through.
     def job_params(*args)
       params.require(:job).permit(*args)
->>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
     end
 
 end
