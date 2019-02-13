@@ -26,28 +26,28 @@
 
   <h3>My Scheduled Events</h3>
 
-  <strong>Teaching Jobs</strong>
+  <strong>Teaching Jobs</strong><br>
   <% if @user.teaching_jobs %>
     <% @user.teaching_jobs.each do |job|%>
       <% if job.has_tutor? %>
-        <%= link_to "Tutoring #{job.student.name}", job_path %>
-        <%= job.location %>
-        <%= job.time %>
+        <%= link_to "Tutoring #{job.student.name}", job_path %><br>
+        <%= job.location %><br>
+        <%= job.time %><br>
       <% else %>
-      <p>You have no teaching jobs!</p>
+      <p>You have no teaching jobs!</p><br>
       <% end %>
     <% end %>
   <% end %>
 
-  <strong>Tutoring Sessions</strong>
+  <strong>Tutoring Sessions</strong><br>
   <% if @user.job_postings %>
     <% @user.job_postings.each do |job|%>
       <% if job.has_tutor? %>
-        <%= link_to "Meeting with #{job.tutor.name}", job_path %>
-        <%= job.location %>
-        <%= job.time %>
+        <%= link_to "Meeting with #{job.tutor.name}", job_path %><br>
+        <%= job.location %><br>
+        <%= job.time %><br>
       <% else %>
-      <p>You have no tutoring sessions!</p>
+      <p>You have no tutoring sessions!</p><br>
       <% end %>
     <% end %>
   <% end %>
