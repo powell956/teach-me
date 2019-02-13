@@ -11,23 +11,51 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+
   end
 
   def edit
   end
 
   def create
-    @job = Job.new(job_params)
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    @job = Job.new(job_params(:description, :location, :time, :rate, :topic_id))
+
+    if params[:job][:type_of_user] == "Student"
+      @job.student_id = current_user.id
+    elsif params[:job][:type_of_user] == "Tutor"
+      @job.tutor_id = current_user.id
     end
+
+    # respond_to do |format|
+      if @job.save
+
+        redirect_to '/job_board'
+        # format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        # format.json { render :show, status: :created, location: @job }
+      else
+        # flash[:message] = "Validations here"\
+        render :new
+        # format.html { render :new }
+        # format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    # end
+  end
+
+  def job_board
+    @jobs = Job.all
+  end
+
+  def add_tutor_or_student
+    @job = Job.find_by(id: params[:job_id])
+    if @job.tutor == nil
+      @job.tutor_id = current_user.id
+      @job.save
+    elsif @job.student == nil
+      @job.student_id = currrent_user.id
+      @job.save
+    end
+    redirect_to @job
   end
 
   def update
@@ -42,6 +70,12 @@ class JobsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+=======
+
+  # DELETE /jobs/1
+  # DELETE /jobs/1.json
+>>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
   def destroy
     @job.destroy
     respond_to do |format|
@@ -56,8 +90,15 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
     end
 
+<<<<<<< HEAD
 
     def job_params
       params.require(:job).permit(:tutor_id, :student_id, :description, :location, :time, :rate, :topic_id)
+=======
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def job_params(*args)
+      params.require(:job).permit(*args)
+>>>>>>> a6599b05d2514e7e7c8fd889d9326af1c1706b5a
     end
+
 end
