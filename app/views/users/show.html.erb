@@ -32,9 +32,9 @@
   <% if @user.teaching_jobs.count > 0 %>
       <% @user.teaching_jobs.each do |job|%>
           <% if job.has_student? %>
-              <%= link_to "Tutoring #{job.student.name}", job_path %><br>
+              <%= link_to "Tutoring #{job.student.name}", job %><br>
           <% else %>
-              <%= link_to "Job Post", job_path %><br>
+              <%= link_to "Job Post", job %><br>
           <% end %>
                 <%= job.location %><br>
                 <%= job.friendly_time %><br>
@@ -48,9 +48,9 @@
   <% if @user.job_postings.count > 0 %>
     <% @user.job_postings.each do |job|%>
       <% if job.has_tutor? %>
-        <%= link_to "Meeting with #{job.tutor.name}", job_path %><br>
+        <%= link_to "Meeting with #{job.tutor.name}", job %><br>
         <% else %>
-            <%= link_to "Job Post", job_path %><br>
+            <%= link_to "Job Post", job %><br>
         <% end %>
     <%= job.location %><br>
     <%= job.friendly_time %><br>
