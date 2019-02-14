@@ -40,7 +40,7 @@
   <div class="field">
 
     <%= form.label :topic_id, "Topic: " %>
-    <%= form.collection_select :topic_id, Topic.all, :id, :name %>
+    <%= form.collection_select :topic_id, Topic.alphabetical, :id, :name %>
     <%= link_to "or create a new topic", new_topic_path %>
 
   </div>
