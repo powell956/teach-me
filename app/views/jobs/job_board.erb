@@ -1,6 +1,11 @@
-<h1 id="test">Job Board</h1>
 
-<h4>Are you looking to hire a tutor or to help a student?</h4>
+<div class="mt-5">
+  <h1>Job Board</h1>
+</div>
+
+<div class="mt-5">
+  <h5>Are you looking to hire a tutor or to help a student?</h5>
+</div>
 <form action="/test" method="post">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <input type="radio" name="board_selection" value="Hire Tutor"> Hire a tutor <br>
@@ -8,34 +13,36 @@
   <input type="submit" value="Go">
 </form>
 
-
-<h2>Tutors Needed!</h2>
-<h4>Here are students looking for tutors:</h4>
-
-<div class="container">
-  <% if @jobs.looking_for_tutors.count > 0 %>
-    <div class="row">
-        <% @jobs.looking_for_tutors.each do |job| %>
-        <div class="col-sm">
-        <%= job.student.username %><br>
-        <%= job.description %><br>
-        <%= job.location %><br>
-        <%= job.friendly_time %><br>
-        <%= job.rate %><br>
-        <%= job.topic.name %><br>
-        <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
-      </div>
-        <% end %>
-      <% else %>
-      <div class="col-sm">There are no students looking for tutors.</div>
-      <% end %>
-    </div>
+<div class="mt-5">
+  <h2>Tutors Needed!</h2>
 </div>
 
 
+<% if @jobs.looking_for_tutors.count > 0 %>
+<div class="card-deck">
+    <% @jobs.looking_for_tutors.each do |job| %>
+    <div class="card p-3 bg-light mb-3">
+      <h5 class="card-title">Can you teach me about <%=job.topic.name%>?</h5>
+      <div class="card-text">
+        Student: <%= job.student.name %><br>
+        Description: <%= job.description %><br>
+        Location: <%= job.location %><br>
+        Date: <%= job.friendly_time %><br>
+        Hourly Rate: $<%= job.rate %><br>
+      </div><br>
+        <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id}%>
 
-<h2>Need Tutoring?</h2>
-<h4>Here are tutors looking for students:</h4>
+  </div>
+    <% end %>
+  <% else %>
+  <div class="col-sm">There are no students looking for tutors.</div>
+  <% end %>
+</div>
+
+<div class="mt-3">
+  <h2>Need Tutoring?</h2>
+</div>
+
 
 
   <% if @jobs.looking_for_students.count > 0 %>
