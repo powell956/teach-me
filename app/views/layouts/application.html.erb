@@ -12,6 +12,7 @@
   </head>
   <body>
     <%= yield %>
+    <%= button_to "My Profile", current_user, method: 'get' %>
     <%= button_to "Logout", '/logout' %>
 
     <!-- Optional JavaScript -->
