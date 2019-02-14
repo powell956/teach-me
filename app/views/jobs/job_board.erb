@@ -1,4 +1,4 @@
-<h1>Job Board</h1>
+<h1 id="test">Job Board</h1>
 
 <h4>Are you looking to hire a tutor or to help a student?</h4>
 <form action="/test" method="post">
@@ -37,18 +37,20 @@
 <h2>Need Tutoring?</h2>
 <h4>Here are tutors looking for students:</h4>
 
-<div class="container">
+
   <% if @jobs.looking_for_students.count > 0 %>
-  <div class="row">
+  <div class="card-deck">
       <% @jobs.looking_for_students.each do |job| %>
-      <div class="col-sm card">
+      <div class="card p-3 bg-light mb-3">
         <h5 class="card-title">Can I teach you about <%=job.topic.name%>?</h5>
-          <%= job.tutor.username %><br>
-          <%= job.description %><br>
-          <%= job.location %><br>
-          <%= job.friendly_time %><br>
-          <%= job.rate %><br>
-          <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
+        <div class="card-text">
+          Tutor: <%= job.tutor.name %><br>
+          Description: <%= job.description %><br>
+          Location: <%= job.location %><br>
+          Date: <%= job.friendly_time %><br>
+          Hourly Rate: $<%= job.rate %><br>
+        </div><br>
+          <%= button_to "Teach me!", '/job_board', params: {job_id: job.id}%>
 
     </div>
       <% end %>
@@ -56,4 +58,3 @@
     <div class="col-sm">There are no tutors looking for students.</div>
     <% end %>
   </div>
-</div>

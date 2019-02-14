@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Codystar|Fredericka+the+Great|Londrina+Outline|Nanum+Gothic');
+
+/* font-family: 'Fredericka the Great', cursive;
+font-family: 'Codystar', cursive;
+font-family: 'Londrina Outline', cursive;
+font-family: 'Nanum Gothic', sans-serif; */
+
+
 body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   font-size: 13px;
   line-height: 18px;
+  padding: 30px;
 }
+
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -81,4 +91,22 @@ div {
 
 label {
   display: block;
+}
+
+
+h1 {
+  font-family: 'Londrina Outline', cursive;
+}
+
+h2 {
+  font-family: 'Codystar', cursive;
+}
+
+.logo {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 2.5em;
+}
+
+.nav-li {
+  display: inline;
 }

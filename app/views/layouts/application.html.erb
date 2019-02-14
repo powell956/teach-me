@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+
+    <%= stylesheet_link_tag "application.css" %>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
 
     <title>TeachMe</title>
   </head>
   <body>
+
+  <div>
+    <h1 class=logo>TeachMe</h1>
+  </div>
+
+  <div>
+    <li class="nav-li"><%= link_to "Profile", current_user %></li>
+    <li class="nav-li"><%= link_to "Logout", '/logout' %> </li>
+  </div>
+
     <%= yield %>
-    <%= button_to "My Profile", current_user, method: 'get' %>
-    <%= button_to "Logout", '/logout' %>
+
+
+  <li class="nav-li"><a href=" <%= '/logout' %> ">Logout</a></li>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
