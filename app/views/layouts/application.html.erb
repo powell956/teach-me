@@ -8,11 +8,30 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
 
+
     <title>TeachMe</title>
   </head>
   <body>
+<<<<<<< HEAD
     <%= yield %>
 
+=======
+
+  <div>
+    <h1 class=logo>TeachMe</h1>
+  </div>
+
+  <div>
+    <li class="nav-li"><%= link_to "Profile", current_user %></li>
+    <li class="nav-li"><%= link_to "Logout", '/logout' %> </li>
+  </div>
+
+<%= button_to "Logout", '/logout', method: 'post' %>
+
+    <%= yield %>
+
+
+>>>>>>> 6d6547b81b0370b72de513262243dd679ff9c0c2
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
-  get '/logout', to: 'session#destroy'
 
   get '/job_board', to: 'jobs#job_board'
   post '/job_board', to: 'jobs#add_tutor_or_student'
