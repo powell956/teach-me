@@ -8,15 +8,19 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<ul>
-  <% @jobs.looking_for_students.each do |job| %>
-<li> <%= job.tutor.username %><br>
-  <%= job.description %><br>
-  <%= job.location %><br>
-  <%= job.friendly_time %><br>
-  $<%= job.rate %>per hour<br>
-  <%= job.subject.name %><br>
-  <%= job.topic.name %></li><br>
-    <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
-  <% end %>
-</ul>
+<% if @jobs.looking_for_students.count > 0 %>
+  <ul>
+    <% @jobs.looking_for_students.each do |job| %>
+  <li> <%= job.tutor.username %><br>
+    <%= job.description %><br>
+    <%= job.location %><br>
+    <%= job.friendly_time %><br>
+    $<%= job.rate %>per hour<br>
+    <%= job.subject.name %><br>
+    <%= job.topic.name %></li><br>
+      <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
+    <% end %>
+  </ul>
+<% else %>
+  <div>There are no tutors looking for students.</div>
+<% end %>

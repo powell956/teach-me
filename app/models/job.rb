@@ -5,6 +5,9 @@ class Job < ApplicationRecord
   belongs_to :topic
   delegate :subject, :to => :topic, :allow_nil => true
 
+  validates :topic, :description, presence: true
+
+
 
 
   def self.looking_for_tutors
