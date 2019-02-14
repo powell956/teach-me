@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Tutoring Session</h1>
 <p>
   <strong>Tutor:</strong>
-  <%= @job.tutor_id %>
+  <%= @job.tutor.name %>
 </p>
 
 <p>
   <strong>Student:</strong>
-  <%= @job.student_id %>
+  <%= @job.student.name %>
 </p>
 
 <p>
@@ -26,13 +27,13 @@
 </p>
 
 <p>
-  <strong>Rate:</strong>
-  <%= @job.rate %>
+  <strong>Hourly rate:</strong>
+  $<%= @job.rate %>
 </p>
 
 <p>
   <strong>Topic:</strong>
-  <%= @job.topic_id %>
+  <%= @job.topic.name %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
