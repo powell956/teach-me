@@ -3,12 +3,20 @@
 <h1>Tutoring Session</h1>
 <p>
   <strong>Tutor:</strong>
-  <%= @job.tutor.name %>
+  <% if @job.tutor %>
+    <%= @job.tutor.name %>
+  <% else %>
+  <div>Needs a tutor</div>
+  <% end %>
 </p>
 
 <p>
   <strong>Student:</strong>
+  <% if @job.student %>
   <%= @job.student.name %>
+  <% else %>
+  <div>Needs a student</div>
+  <% end %>
 </p>
 
 <p>
