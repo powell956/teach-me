@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Topic</h1>
 <p>
   <strong>Name:</strong>
   <%= @topic.name %>
@@ -7,7 +8,7 @@
 
 <p>
   <strong>Subject:</strong>
-  <%= @topic.subject_id %>
+  <%= link_to @topic.subject.name, @topic.subject %>
 </p>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |

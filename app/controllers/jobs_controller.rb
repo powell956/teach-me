@@ -3,7 +3,6 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
-    @topic = @job.topic
   end
 
   def show
@@ -42,8 +41,24 @@ class JobsController < ApplicationController
     # end
   end
 
+  def board_selection
+    if params[:board_selection] == "Hire Tutor"
+      redirect_to '/looking_for_students'
+    else
+      redirect_to '/looking_for_tutors'
+    end
+  end
+
   def job_board
     @jobs = Job.all
+  end
+
+  def looking_for_students
+    @jobs = Job.search(params[:search])
+  end
+
+  def looking_for_tutors
+    @jobs = Job.search(params[:search])
   end
 
   def add_tutor_or_student
@@ -52,7 +67,7 @@ class JobsController < ApplicationController
       @job.tutor_id = current_user.id
       @job.save
     elsif @job.student == nil
-      @job.student_id = currrent_user.id
+      @job.student_id = current_user.id
       @job.save
     end
     redirect_to @job
@@ -72,6 +87,7 @@ class JobsController < ApplicationController
 
 
   def destroy
+    byebug
     @job.destroy
     respond_to do |format|
       format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }

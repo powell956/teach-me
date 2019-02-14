@@ -1,13 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Tutoring Session</h1>
 <p>
   <strong>Tutor:</strong>
-  <%= @job.tutor_id %>
+  <% if @job.tutor %>
+    <%= @job.tutor.name %>
+  <% else %>
+  <div>Needs a tutor</div>
+  <% end %>
 </p>
 
 <p>
   <strong>Student:</strong>
-  <%= @job.student_id %>
+  <% if @job.student %>
+  <%= @job.student.name %>
+  <% else %>
+  <div>Needs a student</div>
+  <% end %>
 </p>
 
 <p>
@@ -22,17 +31,17 @@
 
 <p>
   <strong>Time:</strong>
-  <%= @job.time %>
+  <%= @job.friendly_time %>
 </p>
 
 <p>
-  <strong>Rate:</strong>
-  <%= @job.rate %>
+  <strong>Hourly rate:</strong>
+  $<%= @job.rate %>
 </p>
 
 <p>
   <strong>Topic:</strong>
-  <%= @job.topic_id %>
+  <%= @job.topic.name %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

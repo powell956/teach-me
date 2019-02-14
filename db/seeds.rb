@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "it's hitting seed file"
+Topic.delete_all
+Subject.delete_all
 
 
 u1 = User.create(name: "Katie P", bio: "Autodidact")
