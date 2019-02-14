@@ -1,4 +1,4 @@
-#MAKE TOPIC A REQUIRED FIELD
+
 <%= form_with(model: job, local: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -36,7 +36,7 @@
     <%= form.number_field :rate %>
   </div>
 
-#MAKE TOPIC A REQUIRED FIELD
+
   <div class="field">
 
     <%= form.label :topic_id, "Topic: " %>
