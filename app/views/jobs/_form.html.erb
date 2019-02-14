@@ -12,12 +12,13 @@
     </div>
   <% end %>
 
+  <%= form.label :type_of_user, "I am a " %>
   <%= form.select :type_of_user, options_for_select([["Student", "Student"], ["Tutor", "Tutor"]]) %>
 
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="field">
@@ -26,23 +27,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :time %>
+    <%= form.label :time, "Date and Time" %>
     <%= form.datetime_select :time %>
   </div>
 
   <div class="field">
-    <%= form.label :rate %>
+    <%= form.label :rate, "Hourly Rate" %>
     <%= form.number_field :rate %>
   </div>
 
 #MAKE TOPIC A REQUIRED FIELD
   <div class="field">
 
-    <%= form.label :topic_id %>
-    <%= form.text_field :topic_id %>
-
     <%= form.label :topic_id, "Topic: " %>
     <%= form.collection_select :topic_id, Topic.all, :id, :name %>
+    <%= link_to "or create a new topic", new_topic_path %>
 
   </div>
 
