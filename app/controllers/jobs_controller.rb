@@ -87,6 +87,7 @@ class JobsController < ApplicationController
 
 
   def destroy
+    byebug
     @job.destroy
     respond_to do |format|
       format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
