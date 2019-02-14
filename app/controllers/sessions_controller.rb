@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
   skip_before_action :authorize, only: [:login, :create]
 
   def login
-    render :layout => false
+    if session[:user_id]
+      redirect_to '/job_board'
+    else
+      render :layout => false
+    end
   end
 
   def create

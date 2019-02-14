@@ -12,39 +12,48 @@
 <h2>Tutors Needed!</h2>
 <h4>Here are students looking for tutors:</h4>
 
-<% if @jobs.looking_for_tutors.count > 0 %>
-  <ul>
-    <% @jobs.looking_for_tutors.each do |job| %>
-  <li> <%= job.student.username %><br>
-    <%= job.description %><br>
-    <%= job.location %><br>
-    <%= job.friendly_time %><br>
-    <%= job.rate %><br>
-    <%= job.topic.name %></li><br>
-    <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
-    <% end %>
-  </ul>
-<% else %>
-  <div>There are no students looking for tutors.</div>
-<% end %>
+<div class="container">
+  <% if @jobs.looking_for_tutors.count > 0 %>
+    <div class="row">
+        <% @jobs.looking_for_tutors.each do |job| %>
+        <div class="col-sm">
+        <%= job.student.username %><br>
+        <%= job.description %><br>
+        <%= job.location %><br>
+        <%= job.friendly_time %><br>
+        <%= job.rate %><br>
+        <%= job.topic.name %><br>
+        <%= button_to "I'll teach you!", '/job_board', params: {job_id: job.id} %>
+      </div>
+        <% end %>
+      <% else %>
+      <div class="col-sm">There are no students looking for tutors.</div>
+      <% end %>
+    </div>
+</div>
 
 
 
 <h2>Need Tutoring?</h2>
 <h4>Here are tutors looking for students:</h4>
 
-<% if @jobs.looking_for_students.count > 0 %>
-  <ul>
-    <% @jobs.looking_for_students.each do |job| %>
-  <li> <%= job.tutor.username %><br>
-    <%= job.description %><br>
-    <%= job.location %><br>
-    <%= job.friendly_time %><br>
-    <%= job.rate %><br>
-    <%= job.topic.name %></li><br>
-    <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
+<div class="container">
+  <% if @jobs.looking_for_students.count > 0 %>
+  <div class="row">
+      <% @jobs.looking_for_students.each do |job| %>
+      <div class="col-sm card">
+        <h5 class="card-title">Can I teach you about <%=job.topic.name%>?</h5>
+          <%= job.tutor.username %><br>
+          <%= job.description %><br>
+          <%= job.location %><br>
+          <%= job.friendly_time %><br>
+          <%= job.rate %><br>
+          <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
+
+    </div>
+      <% end %>
+    <% else %>
+    <div class="col-sm">There are no tutors looking for students.</div>
     <% end %>
-  </ul>
-<% else %>
-  <div>There are no tutors looking for students.</div>
-<% end %>
+  </div>
+</div>

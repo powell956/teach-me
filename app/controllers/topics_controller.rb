@@ -24,7 +24,6 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    byebug
     @subject = Subject.find_or_create_by(name: params[:topic][:subject_name])
     @topic = Topic.new(name: params[:topic][:name], subject_id: @subject.id)
 

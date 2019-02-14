@@ -14,10 +14,7 @@
 
   <%= form.label :type_of_user, "I am a " %>
   <%= form.select :type_of_user, options_for_select([["Student", "Student"], ["Tutor", "Tutor"]]) %>
-<<<<<<< HEAD
-=======
 
->>>>>>> be88976bb2eff5414aa412bdafd10205d5f51c52
 
   <div class="field">
     <%= form.label :description %>
@@ -41,18 +38,9 @@
 
 
   <div class="field">
-<<<<<<< HEAD
-    <%= form.label :topic_id %>
-    <%= form.text_field :topic_id %>
-    <%= form.label :topic_id, "Topic: " %>
-    <%= form.collection_select :topic_id, Topic.all, :id, :name %>
-=======
-
     <%= form.label :topic_id, "Topic: " %>
     <%= form.collection_select :topic_id, Topic.alphabetical, :id, :name %>
     <%= link_to "or create a new topic", new_topic_path %>
-
->>>>>>> be88976bb2eff5414aa412bdafd10205d5f51c52
   </div>
 
   <div class="actions">
