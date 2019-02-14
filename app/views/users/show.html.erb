@@ -37,6 +37,8 @@
           <% else %>
               <%= link_to "Job Post", job %><br>
           <% end %>
+                <%= job.subject.name %>:
+                <%= job.topic.name %><br>
                 <%= job.location %><br>
                 <%= job.friendly_time %><br>
                 <%= link_to 'Edit', edit_job_path(job) %><br>
@@ -53,6 +55,8 @@
         <% else %>
             <%= link_to "Job Post", job %><br>
         <% end %>
+        <%= job.subject.name %>:
+        <%= job.topic.name %><br>
     <%= job.location %><br>
     <%= job.friendly_time %><br>
     <%= link_to 'Edit', edit_job_path(job) %><br>
