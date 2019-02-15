@@ -4,71 +4,95 @@
 <h1><%= @user.name %>'s Profile</h1>
 
 
-<p>
+<div class="mt-3">
   <strong>Username:</strong>
   <%= @user.username %>
-</p>
+
+</div>
 
 
 
-<p>
+
+<div class="mt-3">
   <strong>Bio:</strong>
   <%= @user.bio %>
-</p>
+</div>
 
-<%= link_to 'Create a Tutoring Job', new_job_path %> |
-<%= link_to 'See All Tutoring Jobs', '/job_board' %> |
-<%= link_to 'All Users', users_path %>
-<% if @user.id == current_user.id %>
-| <%= link_to 'Edit My Profile', edit_user_path(@user) %>
-<% end %>
+<div class="mt-3">
+
+  <%= link_to 'Create a Tutoring Job', new_job_path %> |
+  <%= link_to 'See All Tutoring Jobs', '/job_board' %> |
+  <%= link_to 'All Users', users_path %>
+  <% if @user.id == current_user.id %>
+  | <%= link_to 'Edit My Profile', edit_user_path(@user) %>
+  <% end %>
+</div>
 
 
 
 <% if current_user.id == @user.id %>
 
-  <h2>My Scheduled Events</h2>
+  <h2 class="mt-3">My Scheduled Events</h2>
 
-  <strong>Teaching Jobs</strong><br>
+
+<div class="mt-3">
+  <strong>Teaching</strong>
+</div>
+
+
+<div class="card-deck mt-3">
   <% if @user.teaching_jobs.count > 0 %>
-      <% @user.teaching_jobs.each do |job|%>
-          <% if job.has_student? %>
-              <%= link_to "Tutoring #{job.student.name}", job %><br>
-          <% else %>
-              <%= link_to "Job Post", job %><br>
-          <% end %>
-                <%= job.subject.name %>:
-                <%= job.topic.name %><br>
-                <%= job.location %><br>
-                <%= job.friendly_time %><br>
-                <%= link_to 'Edit', edit_job_path(job) %><br>
-    <% end %>
+        <% @user.teaching_jobs.each do |job|%>
+        <div class="card p-3">
+            <% if job.has_student? %>
+                <%= link_to "Tutoring #{job.student.name}", job %><br>
+            <% else %>
+                <%= link_to "Job Post", job %><br>
+            <% end %>
+                  <%= job.subject.name %>:
+                  <%= job.topic.name %><br>
+                  Location: <%= job.location %><br>
+                  Date: <%= job.friendly_time %><br>
+                  <%= link_to 'Edit', edit_job_path(job) %><br>
+        </div>
+      <% end %>
   <% else %>
-    <p>You have no teaching jobs!</p><br>
+    <p>You have no teaching jobs!</p>
   <% end %>
+</div>
 
-  <strong>Tutoring Requests</strong><br>
+
+
+  <div class="mt-3">
+    <strong>Learning</strong><br>
+  </div>
+
+  <div class="card-deck mt-3">
   <% if @user.job_postings.count > 0 %>
     <% @user.job_postings.each do |job|%>
+    <div class="card p-3">
       <% if job.has_tutor? %>
         <%= link_to "Meeting with #{job.tutor.name}", job %><br>
-        <% else %>
-            <%= link_to "Job Post", job %><br>
-        <% end %>
+      <% else %>
+        <%= link_to "Job Post", job %><br>
+      <% end %>
         <%= job.subject.name %>:
         <%= job.topic.name %><br>
-    <%= job.location %><br>
-    <%= job.friendly_time %><br>
-    <%= link_to 'Edit', edit_job_path(job) %><br>
+        <%= job.location %><br>
+        <%= job.friendly_time %><br>
+        <%= link_to 'Edit', edit_job_path(job) %><br>
+      </div>
+    <% end %>
+    <% else %>
+      <p>You have no tutoring requests!</p><br>
+    <% end %>
+  </div>
+
+<% end %>
+
+<div class="mt-5">
+
+  <% if current_user.id == @user.id %>
+  <%= button_to 'Delete My Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-<% else %>
-  <p>You have no tutoring requests!</p><br>
-<% end %>
-
-
-<% end %>
-
-
-<% if current_user.id == @user.id %>
-<%= button_to 'Delete My Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+</div>

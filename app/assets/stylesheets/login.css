@@ -10,8 +10,9 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5
+  /* background-color: #f5f5f5 */
   text: red;
+  background-image: url('https://images.unsplash.com/photo-1521714161819-15534968fc5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80') !important;
 }
 
 .form-signin {
