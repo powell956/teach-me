@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if session[:user_id]
       redirect_to '/job_board'
     else
-      render :layout => false
+      render :layout => "login"
     end
   end
 
