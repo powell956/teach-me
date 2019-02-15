@@ -8,19 +8,25 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<% if @jobs.looking_for_students.count > 0 %>
-  <ul>
-    <% @jobs.looking_for_students.each do |job| %>
-  <li> <%= job.tutor.username %><br>
-    <%= job.description %><br>
-    <%= job.location %><br>
-    <%= job.friendly_time %><br>
-    $<%= job.rate %>per hour<br>
-    <%= job.subject.name %><br>
-    <%= job.topic.name %></li><br>
-      <%= button_to "Teach me!", '/job_board', params: {job_id: job.id} %>
+
+  <% if @jobs.looking_for_students.count > 0 %>
+  <div class="card-deck">
+      <% @jobs.looking_for_students.each do |job| %>
+      <div class="card p-3">
+        <h5 class="card-title">Can I teach you about <%=job.topic.name%>?</h5>
+        <div class="card-text">
+          Tutor: <%= job.tutor.name %><br>
+          Description: <%= job.description %><br>
+          Subject: <%= job.subject.name %><br>
+          Location: <%= job.location %><br>
+          Date: <%= job.friendly_time %><br>
+          Hourly Rate: $<%= job.rate %><br>
+        </div><br>
+          <%= button_to "Teach me!", '/job_board', params: {job_id: job.id}%>
+
+    </div>
+      <% end %>
+    <% else %>
+    <div class="col-sm">There are no tutors looking for students.</div>
     <% end %>
-  </ul>
-<% else %>
-  <div>There are no tutors looking for students.</div>
-<% end %>
+  </div>
