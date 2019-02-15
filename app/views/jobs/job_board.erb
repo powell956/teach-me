@@ -21,11 +21,12 @@
 <% if @jobs.looking_for_tutors.count > 0 %>
 <div class="card-deck">
     <% @jobs.looking_for_tutors.each do |job| %>
-    <div class="card p-3 bg-light mb-3">
+    <div class="card p-3">
       <h5 class="card-title">Can you teach me about <%=job.topic.name%>?</h5>
       <div class="card-text">
         Student: <%= job.student.name %><br>
         Description: <%= job.description %><br>
+        Subject: <%= job.subject.name %><br>
         Location: <%= job.location %><br>
         Date: <%= job.friendly_time %><br>
         Hourly Rate: $<%= job.rate %><br>
@@ -48,11 +49,12 @@
   <% if @jobs.looking_for_students.count > 0 %>
   <div class="card-deck">
       <% @jobs.looking_for_students.each do |job| %>
-      <div class="card p-3 bg-light mb-3">
+      <div class="card p-3">
         <h5 class="card-title">Can I teach you about <%=job.topic.name%>?</h5>
         <div class="card-text">
           Tutor: <%= job.tutor.name %><br>
           Description: <%= job.description %><br>
+          Subject: <%= job.subject.name %><br>
           Location: <%= job.location %><br>
           Date: <%= job.friendly_time %><br>
           Hourly Rate: $<%= job.rate %><br>
